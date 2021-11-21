@@ -2,6 +2,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 // 导入store
 import store from '@/store/index.js'
+import { isCheckTimeOut } from './auth.js'
 
 // 封装token
 const server = axios.create({
@@ -13,6 +14,12 @@ const server = axios.create({
 server.interceptors.request.use(
   (config) => {
     if (store.getters.token) {
+      if (isCheckTimeOut()) {
+        // 过期执行退出
+        store.dispatch('user/logout')
+        // 不应该请求了
+        return Promise.reject(new Error('token过期'))
+      }
       // 如果存在封装token 不存在不封装
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
@@ -41,10 +48,18 @@ server.interceptors.response.use(
     }
   },
   (error) => {
+    // token失效 code=401 单点登录 后台会返回特定的状态码 执行退出
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.code === 401
+    ) {
+      store.dispatch('user/logout')
+    }
     // 服务器没有返回数据或者是服务器未知错误
     ElMessage({
       type: 'error',
-      message: 'xxx'
+      message: error.message
     })
     // 对响应错误做点什么
     return Promise.reject(error)

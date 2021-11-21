@@ -1,6 +1,47 @@
 <template>
-  <h1>首页</h1>
+  <div class="app-wrapper">
+    <!-- 左边 -->
+    <side-bar
+      class="siberbar-container"
+      :style="{ backgroundColor: variables.menuBg }"
+    />
+    <!-- 右边 -->
+    <div class="main-container">
+      <div class="fixed-header">
+        <nav-bar />
+      </div>
+      <app-main />
+    </div>
+  </div>
 </template>
-<script setup></script>
+<script setup>
+import SideBar from './components/Sidebar'
+import NavBar from './components/Navbar'
+import AppMain from './components/Appmain'
 
-<style lang="scss" scoped></style>
+import variables from '@/styles/variables.scss'
+</script>
+
+<style lang="scss" scoped>
+@import '~@/styles/common.scss';
+@import '~@/styles/variables.scss';
+.app-wrapper {
+  @include clearfix;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  .siberbar-container {
+    width: $sideBarWidth;
+    height: 100vh;
+  }
+  .main-container {
+    .fixed-header {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      z-index: 10;
+      width: calc(100% - #{$sideBarWidth}); // 用来动态计算宽度的
+    }
+  }
+}
+</style>

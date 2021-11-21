@@ -21,9 +21,7 @@ export const getItem = (key) => {
 
 // 删除单个
 export const deleteItem = (key) => {
-  window.lo
-
-  calStorage.removeItem(key)
+  window.localStorage.removeItem(key)
 }
 
 // 清空所有

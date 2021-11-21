@@ -4,7 +4,7 @@ import store from './store/index.js'
 const whiteRouter = ['/login']
 
 // 进入每一个路由都会执行这个钩子
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   /*
     用户鉴权
       当用户为登录时(没有token),只能进入login页面
@@ -16,7 +16,15 @@ router.beforeEach((to, from, next) => {
       // 不允许
       next('/')
     } else {
-      // 允许
+      // 登录成功 跳转到首页
+      if (!store.getters.hasUserInfo) {
+        // 判断没有用户的信息 就去发送axios
+        // setTimeout(async () => {
+        //   await store.dispatch('user/getUserInfo')
+        //   next()
+        // }, 70000)
+        await store.dispatch('user/getUserInfo')
+      }
       next()
     }
   } else {

@@ -40,3 +40,11 @@ app.use(store).use(router).mount('#app')
 //    a) 禁用file-loader 对某个目录下的svg的解析
 //    b) 下载loader
 //        npm install -D svg-sprite-loader //-D 保存在devlopment依赖中配置
+
+/*
+  退出业务:
+    token的作用:
+      a) token是由后台在首次登录的时候生成,通过response响应给前端
+        意思是说一个token同时在前后端都有保存
+      b) token表示用户的身份,是一个用户的令牌,对于服务器而言,只认token不认人
+*/
