@@ -100,6 +100,7 @@ const handleLogin = () => {
         name: 'Index'
       })
     })
+    console.log(loginForm.value)
   })
 }
 </script>
@@ -160,7 +161,7 @@ $cursor: #fff;
     }
 
     .svg-container {
-      padding: 6px 5px 5px 15px;
+      padding: 6px 0 5px 10px;
       color: $dark_gray;
       vertical-align: middle;
       display: inline-block;

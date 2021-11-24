@@ -1,5 +1,8 @@
 <template>
-  <h1 class="app-main">appmain</h1>
+  <div class="app-main">
+    <router-view></router-view>
+  </div>
+  <!-- 二级路由显示容器 -->
 </template>
 <script setup></script>
 <style lang="scss" scoped>

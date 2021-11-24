@@ -80,10 +80,12 @@
     .hideSidebar {
       .sidebar-container {
         width: 54px !important;
+        transition: width 0.28;
       }
   
       .main-container {
         margin-left: 54px;
+        transition: margin-left 0.28;
       }
   
       .submenu-title-noDropdown {
@@ -107,7 +109,7 @@
         overflow: hidden;
   
         & > .el-submenu__title {
-          padding: 0 !important;
+          // padding: 0 !important;
   
           .svg-icon {
             margin-left: 20px;
