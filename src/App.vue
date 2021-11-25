@@ -1,7 +1,16 @@
 <template>
-  <div>
+  <el-config-provider :locale="store.getters.language === 'zh' ? zhCn : en">
     <router-view></router-view>
-  </div>
+  </el-config-provider>
 </template>
 
-<script setup></script>
+<script setup>
+import { useStore } from 'vuex'
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'
+import en from 'element-plus/lib/locale/lang/en'
+import { generateNewStyle, writeStyleToHearTag } from '@/utils/theme.js'
+const store = useStore()
+generateNewStyle(store.getters.theme_color).then((res) => {
+  writeStyleToHearTag(res)
+})
+</script>

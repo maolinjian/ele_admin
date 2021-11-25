@@ -5,6 +5,8 @@
     <!-- 面包屑 -->
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <!-- 主题换肤 -->
+      <theme class="right-menu-item" />
       <!-- 国际化按钮 -->
       <select-lang class="right-menu-item" />
       <el-dropdown class="avatar-container">
@@ -14,9 +16,11 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-drop-down">
-            <el-dropdown-item>{{$t('msg.navBar.home')}}</el-dropdown-item>
-            <el-dropdown-item>{{$t('msg.navBar.course')}}</el-dropdown-item>
-            <el-dropdown-item @click="logout">{{$t('msg.navBar.logout')}}</el-dropdown-item>
+            <el-dropdown-item>{{ $t('msg.navBar.home') }}</el-dropdown-item>
+            <el-dropdown-item>{{ $t('msg.navBar.course') }}</el-dropdown-item>
+            <el-dropdown-item @click="logout">{{
+              $t('msg.navBar.logout')
+            }}</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -29,6 +33,7 @@ import { useStore } from 'vuex'
 import Cuttle from '@/components/Cuttle/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
 import SelectLang from '@/components/SelectLang/index.vue'
+import Theme from '@/components/Theme/index.vue'
 const store = useStore()
 // 主动退出
 const logout = () => {
