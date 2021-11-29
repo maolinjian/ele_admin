@@ -3,7 +3,7 @@
     <!-- logo -->
     <div class="logo-container">
       <el-avatar :src="logo" shape="square" />
-      <h1 class="logo-title" v-if="store.getters.sideBarOpen">element-admin</h1>
+      <h1 class="logo-title" v-if="store.getters.sideBarOpen">ele-admin</h1>
     </div>
     <!-- 包裹一个滚动组件 -->
     <el-scrollbar>
