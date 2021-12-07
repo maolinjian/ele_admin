@@ -102,8 +102,6 @@ const initFuse = (list) => {
   })
 }
 initFuse(list.value) // list 数据源
-console.log(fuse)
-
 // 监听language的切换动作
 watchLang((lang) => {
   list = computed(() => {

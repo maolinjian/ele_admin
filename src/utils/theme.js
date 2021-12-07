@@ -16,7 +16,6 @@ export const generateNewStyle = async (primary) => {
 
   // 3.根据主色生成对应的请景色
   const newColors = generatColors(primary)
-  console.log(newColors)
 
   // 4.在newStyle的模板中将标记都替换成生成的色值
   Object.keys(newColors).forEach((key) => {
@@ -28,8 +27,9 @@ export const generateNewStyle = async (primary) => {
   return newStyle
 }
 const getOriginalStyle = async () => {
-  const version = require('element-plus/package.json').version
-  const url = `https://unpkg.com/element-plus@${version}/dist/index.css`
+  // const version = require('element-plus/package.json').version
+  // const url = `https://unpkg.com/element-plus@${version}/dist/index.css`
+  const url = `http://localhost:8080/element-plus.css`
   const { data } = await axios.get(url)
   return data
 }

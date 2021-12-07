@@ -21,9 +21,13 @@ import './permission.js'
 // 导入i18n
 import i18n from '@/i18n/index.js'
 
+// 注册全局属性
+import initfilters from '@/filters/index.js'
+
 const app = createApp(App)
 installElementPlus(app)
 initSvgIcon(app)
+initfilters(app)
 app.use(store).use(router).use(i18n).mount('#app')
 
 // 入口 main.js(导入模块:js模块) --> webpack  出口 js/app.js文件

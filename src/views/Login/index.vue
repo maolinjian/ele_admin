@@ -106,7 +106,6 @@ const handleLogin = () => {
         name: 'Index'
       })
     })
-    console.log(loginForm.value)
   })
 }
 
